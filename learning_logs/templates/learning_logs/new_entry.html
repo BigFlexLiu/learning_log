@@ -7,8 +7,9 @@
 
 {% block content %}
 <p>Add a new entry:</p>
-  {% csrf_token %}
 <form action="{% url 'learning_logs:new_entry' topic.id %}" method="post">
+  {% csrf_token %}
+
   {% bootstrap_form form %}
   {% buttons %}
   <button name="submit">Add entry</button>

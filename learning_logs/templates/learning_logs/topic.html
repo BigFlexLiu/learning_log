@@ -10,15 +10,18 @@
 <div class="card mb-3">
   <h4 class="card-header">
     {{ entry.date_added|date:'M d, Y H:i' }}
-    <small><a href="{% url 'learning_logs:edit_entry' entry.id %}">Edit Entry</a></small>
   </h4>
   <div class="card-body">
     {{ entry.text|linebreaks }}
   </div>
+  <h5 class="card-footer">
+    <small><a href="{% url 'learning_logs:edit_entry' entry.id %}" class="btn-outline-secondary" style="text-decoration:none">Edit Entry</a></small>
+    <small><a href="{% url 'learning_logs:delete_entry' entry.id %}" class="btn-outline-danger btn-sm" style="text-decoration:none">Delete Entry</a></small>
+  </h5>
 </div>
 {% empty %}
 <p>There is no entry for this topic yet.</p>
 {% endfor %}
-
+<a href="{% url 'learning_logs:delete_topic' topic.id %}" class="btn-outline-danger btn-sm" style="text-decoration:none">Delete Topic</a>
 
 {% endblock content %}
